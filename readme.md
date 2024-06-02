@@ -4,7 +4,7 @@
   - [ ] register
   - [x] username validation
   - [x] email validation
-  - [ ] phone validation
+  - [X] phone validation
   - [ ] password validation
   - [ ] update last login
   - [ ] create wallet

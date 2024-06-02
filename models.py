@@ -28,7 +28,7 @@ class User:
     def validate_username(self, name):
         if len(name) > 100:
             raise Exception("unable to validate long username")
-        elif re.match("^[A-Za-z0-9_-]*$", name) != None:
+        elif re.match("^[A-Za-z0-9]*$", name) != None:
             if name not in self.usernames:
                 self.usernames.append(name)
                 return True
@@ -43,5 +43,10 @@ class User:
         return False
     
     def validate_phone(self, phone):
-        pattern = r"^[0+0-9]"
-        pass
+        # 09392972197
+        # +989*********
+        # ^(09\d{9}|\+989\d{9})$
+        pattern = r"^(\+98|0)\d{10}$"
+        return re.match(pattern, phone) is not None
+    
+        
