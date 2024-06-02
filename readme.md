@@ -2,8 +2,8 @@
 
 - [ ] User
   - [ ] register
-  - [ ] username validation
-  - [ ] email validation
+  - [x] username validation
+  - [x] email validation
   - [ ] phone validation
   - [ ] password validation
   - [ ] update last login

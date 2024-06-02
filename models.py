@@ -2,7 +2,11 @@ import re
 from datetime import datetime
 
 class User:
+    usernames = []
+    emails = []
     current_id = 0
+
+
     def __init__(self, username, email, phone="") -> None:
         self.id = self.current_id
         if self.validate_username(username):
@@ -23,14 +27,20 @@ class User:
 
     def validate_username(self, name):
         if len(name) > 100:
-            raise ZeroDivisionError
-        if re.match("^[A-Za-z0-9_-]*$", name) != None:
-            return True
+            raise Exception("unable to validate long username")
+        elif re.match("^[A-Za-z0-9_-]*$", name) != None:
+            if name not in self.usernames:
+                self.usernames.append(name)
+                return True
         return False
     
     def validate_email(self, email):
         pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
-        return re.match(pattern, email) is not None
+        if re.match(pattern, email) is not None:
+            if email not in self.emails:
+                self.emails.append(email)
+                return True
+        return False
     
     def validate_phone(self, phone):
         pattern = r"^[0+0-9]"
