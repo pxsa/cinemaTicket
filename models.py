@@ -49,4 +49,23 @@ class User:
         pattern = r"^(\+98|0)\d{10}$"
         return re.match(pattern, phone) is not None
     
+
+    def validate_password(self, password):
+        # check the length
+        if len(password) < 8:
+            return False
+        
+        # check the count of specific characters
+        specific_chars = []
+        for ch in password:
+            if ch in ['@', '#', '&', '$']:
+                specific_chars.append(ch)
+
+        if len(specific_chars) < 2:
+            return False
+        
+        # check only valid charachters
+        pattern = r'^[a-zA-Z0-9@#$&]*$'
+        return re.match(pattern, password) is not None
+
         

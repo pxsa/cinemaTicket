@@ -47,3 +47,21 @@ class UserTest(unittest.TestCase):
         # invalid character
         self.assertEqual(False, self.user.validate_phone(invalid_phone2))
         
+
+    def test_validate_password(self):
+
+        #  examine the length of password
+        password = "1" * 8  + "@#"
+        self.assertEqual(True, self.user.validate_password(password))
+        password = "1" * 6
+        self.assertEqual(False, self.user.validate_password(password))
+
+        # at least contains 2 of these characters [$, &, #, @]
+        password = "@salam&salam"
+        self.assertEqual(True, self.user.validate_password(password))
+        password = "@salamklsalam"
+        self.assertEqual(False, self.user.validate_password(password))
+
+        # check allowed characters
+        password = "fsjdflk&#@$jdkjgdf@@@-dfd"
+        self.assertEqual(False, self.user.validate_password(password))

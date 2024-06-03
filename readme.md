@@ -5,7 +5,7 @@
   - [x] username validation
   - [x] email validation
   - [X] phone validation
-  - [ ] password validation
+  - [X] password validation
   - [ ] update last login
   - [ ] create wallet
   - [ ] buy membership
