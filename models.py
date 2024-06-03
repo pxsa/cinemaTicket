@@ -7,23 +7,28 @@ class User:
     current_id = 0
 
 
-    def __init__(self, username, email, phone="") -> None:
+    def __init__(self, username, email, password, date_of_birth, phone = "") -> None:
+        
+        is_valid = self.validate_username(username) and \
+                   self.validate_email(email) and \
+                   self.validate_phone(phone) and \
+                   self.validate_password(password)
+
+        if is_valid:
+            self.register(username, email, password, date_of_birth, phone)
+                    
+
+    def register(self, username, email, password, date_of_birth, phone = ""):
         self.id = self.current_id
-        if self.validate_username(username):
-            self.username = username
-
-        if self.validate_email(email):
-            self.email = email
-
-        if self.validate_phone(phone):
-            self.phone = phone
-
-
+        self.username = username
+        self.email = email
+        self.phone = phone
+        self.password = password
+        self.date_of_birth = date_of_birth
         self.created_at = datetime.now()
         self.last_login_date = datetime.now()
         self.wallet = 0
         self.current_id += 1
-
 
     def validate_username(self, name):
         if len(name) > 100:

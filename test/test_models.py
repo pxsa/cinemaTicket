@@ -5,7 +5,7 @@ from models import User
 
 class UserTest(unittest.TestCase):
     def setUp(self) -> None:
-        self.user = User("ali", "ali@gmail.com")
+        self.user = User("ali", "ali@gmail.com", "123$@#salam", "")
     
     def test_validate_username(self):
         # test unique username
